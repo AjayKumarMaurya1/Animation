@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+</head>
+<body>
+    // hemabarg----------------
+
+document.querySelector("#hemberg").onclick = function () {
+
+    document.querySelector("#hemberg").classList.toggle("hide")
+    document.querySelector("#hembergback").classList.toggle("hide")
+    document.querySelector("#menu1").classList.toggle("hide")
+}
+
+document.querySelector("#hembergback").onclick = function () {
+
+    document.querySelector("#hemberg").classList.toggle("hide")
+    document.querySelector("#hembergback").classList.toggle("hide")
+    document.querySelector("#menu1").classList.toggle("hide")
+
+}
+// slider---para-----------------------
+document.querySelector("#a").onclick = function () {
+    document.querySelector(".para1").classList.toggle("hide");
+    document.querySelector(".para2").classList.toggle("hide");
+}
+
+document.querySelector("#b").onclick = function () {
+
+    document.querySelector(".para2").classList.toggle("hide");
+    document.querySelector(".para3").classList.toggle("hide");
+}
+
+document.querySelector("#c").onclick = function () {
+
+    document.querySelector(".para1").classList.toggle("hide");
+    document.querySelector(".para3").classList.toggle("hide");
+}
+
+// show date----near follow button----------------
+
+var dates = document.querySelectorAll(".dates");
+for (let i = 0; i < dates.length; i++) {
+    dates[i].innerHTML = new Date().toDateString();
+}
+// follow button------------------------------------
+
+
+const followBtns = document.querySelectorAll(".follow")
+function toggleFollow(event) {
+    const button = event.target;
+
+    if (button.textContent === "+Follow") {
+        button.textContent = "Unfollow";
+        
+    } else {
+        button.textContent = "+Follow";
+        alert('You have unfollowed');
+    }
+}
+followBtns.forEach((button) => {
+    button.addEventListener("click", toggleFollow);
+});
+
+// star ----revive-----------------------------------------
+
+document.querySelectorAll('.star').forEach(stardiv => {
+    stardiv.querySelectorAll('button').forEach((button, index) => {
+        button.onclick = e => {
+            let btns = stardiv.querySelectorAll('button')
+            btns.forEach((b, i) => {
+                b.classList.remove('starss')
+                if (i <= index)
+                    b.classList.add('starss')
+            })
+        }
+    })
+})
+
+// like and dislike-----------------------------------------------------------------
+
+let likecmt = document.querySelectorAll('.likecommentbtn')
+
+likecmt.forEach(lc => {
+    console.log(lc)
+    // sectreaction class---------
+    let reaction = lc.querySelectorAll('.reaction')
+    reaction.forEach(r => {
+        r.onclick = e => {
+            // check if r has active class
+            if (r.classList.contains('likebg')) {
+                r.classList.remove('likebg')
+                console.log('yes')   
+            }
+         
+            else {
+                reaction.forEach(rb => {
+                    // console.log(rb)
+                    rb.classList.remove('likebg')
+                })
+                r.classList.add('likebg')
+            }
+        }
+    })
+})
+
+// comment page --------------------------------------------------------------------
+document.querySelectorAll("#commentbtn").forEach(com => {
+    console.log("hiii");
+    com.addEventListener("click",e=> {
+        document.querySelector("textarea").classList.toggle("hide")
+        document.querySelector(".postcommentbtn").classList.toggle("hide")
+
+    })
+})
+
+document.querySelector(".postcommentbtn").onclick = function () {
+    document.querySelector("textarea").classList.toggle("hide")
+        document.querySelector(".postcommentbtn").classList.toggle("hide")
+
+}
+
+// shair page--------------------------------------------
+
+document.querySelectorAll("#sharebtn").forEach(sha => {
+    console.log("hiii");
+    sha.addEventListener("click", e => {
+        document.querySelector(".shairpagmain").classList.toggle("hide")
+        document.querySelector("#cancialshairtbtn").classList.toggle("hide")
+
+    })
+});
+document.querySelector("#cancialshairbtn").onclick = function () {
+    document.querySelector(".shairpagmain").classList.toggle("hide")
+      
+}
+
+
+</body>
+</html>
