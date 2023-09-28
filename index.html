@@ -1,143 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation</title>
+    <title>Animation`s</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .startmidle {
+            animation-name: middle;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-duration: right;
+        }
+
+        .startinn {
+            animation-name: inner;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-direction: left;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .outerdiv {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2l0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80");
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .middeldiv {
+            width: 400px;
+            height: 400px;
+            border: none;
+            border-radius: 50%;
+            background-image: url("https://media.istockphoto.com/id/1325342016/photo/mumbai-skyline-wadala-sewri-lalbaug.jpg?s=612x612&w=0&k=20&c=Zu7P_lttSwIU5rLJFdPmhXW4Hy-C64bAhxA7V28LvJQ=");
+            position: absolute;
+            left: 30%;
+            top: 20%;
+            /* animation: middle 2s 2s infinite right; */
+
+        }
+
+        @keyframes middle {
+            0% {
+
+                rotate: -7060deg;
+            }
+        }
+
+
+        .innrdiv {
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            background-image: url("https://cdn.pixabay.com/photo/2017/10/17/19/11/fantasy-2861815_1280.jpg");
+            position: absolute;
+            left: 35%;
+            top: 30%;
+
+        }
+
+        @keyframes inner {
+            0% {
+
+                rotate: 7060deg;
+            }
+        }
+
+        /* second page------------- */
+        .secondpage {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj4r6M2Ml_SwgxawAxoUjZh4K1a5QoFXTIXg&usqp=CAU");
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .middeldiv2 {
+            width: 400px;
+            height: 400px;
+            border: none;
+            border-radius: 50%;
+            background-image: url("https://media.istockphoto.com/id/1325342016/photo/mumbai-skyline-wadala-sewri-lalbaug.jpg?s=612x612&w=0&k=20&c=Zu7P_lttSwIU5rLJFdPmhXW4Hy-C64bAhxA7V28LvJQ=");
+            position: absolute;
+            left: 30%;
+            top: 20%;
+        }
+
+        .innrdiv2 {
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            background-image: url("https://cdn.pixabay.com/photo/2017/10/17/19/11/fantasy-2861815_1280.jpg");
+            position: absolute;
+            left: 35%;
+            top: 30%;
+
+        }
+    </style>
 </head>
+
 <body>
-    // hemabarg----------------
-
-document.querySelector("#hemberg").onclick = function () {
-
-    document.querySelector("#hemberg").classList.toggle("hide")
-    document.querySelector("#hembergback").classList.toggle("hide")
-    document.querySelector("#menu1").classList.toggle("hide")
-}
-
-document.querySelector("#hembergback").onclick = function () {
-
-    document.querySelector("#hemberg").classList.toggle("hide")
-    document.querySelector("#hembergback").classList.toggle("hide")
-    document.querySelector("#menu1").classList.toggle("hide")
-
-}
-// slider---para-----------------------
-document.querySelector("#a").onclick = function () {
-    document.querySelector(".para1").classList.toggle("hide");
-    document.querySelector(".para2").classList.toggle("hide");
-}
-
-document.querySelector("#b").onclick = function () {
-
-    document.querySelector(".para2").classList.toggle("hide");
-    document.querySelector(".para3").classList.toggle("hide");
-}
-
-document.querySelector("#c").onclick = function () {
-
-    document.querySelector(".para1").classList.toggle("hide");
-    document.querySelector(".para3").classList.toggle("hide");
-}
-
-// show date----near follow button----------------
-
-var dates = document.querySelectorAll(".dates");
-for (let i = 0; i < dates.length; i++) {
-    dates[i].innerHTML = new Date().toDateString();
-}
-// follow button------------------------------------
-
-
-const followBtns = document.querySelectorAll(".follow")
-function toggleFollow(event) {
-    const button = event.target;
-
-    if (button.textContent === "+Follow") {
-        button.textContent = "Unfollow";
-        
-    } else {
-        button.textContent = "+Follow";
-        alert('You have unfollowed');
-    }
-}
-followBtns.forEach((button) => {
-    button.addEventListener("click", toggleFollow);
-});
-
-// star ----revive-----------------------------------------
-
-document.querySelectorAll('.star').forEach(stardiv => {
-    stardiv.querySelectorAll('button').forEach((button, index) => {
-        button.onclick = e => {
-            let btns = stardiv.querySelectorAll('button')
-            btns.forEach((b, i) => {
-                b.classList.remove('starss')
-                if (i <= index)
-                    b.classList.add('starss')
-            })
-        }
-    })
-})
-
-// like and dislike-----------------------------------------------------------------
-
-let likecmt = document.querySelectorAll('.likecommentbtn')
-
-likecmt.forEach(lc => {
-    console.log(lc)
-    // sectreaction class---------
-    let reaction = lc.querySelectorAll('.reaction')
-    reaction.forEach(r => {
-        r.onclick = e => {
-            // check if r has active class
-            if (r.classList.contains('likebg')) {
-                r.classList.remove('likebg')
-                console.log('yes')   
-            }
-         
-            else {
-                reaction.forEach(rb => {
-                    // console.log(rb)
-                    rb.classList.remove('likebg')
-                })
-                r.classList.add('likebg')
-            }
-        }
-    })
-})
-
-// comment page --------------------------------------------------------------------
-document.querySelectorAll("#commentbtn").forEach(com => {
-    console.log("hiii");
-    com.addEventListener("click",e=> {
-        document.querySelector("textarea").classList.toggle("hide")
-        document.querySelector(".postcommentbtn").classList.toggle("hide")
-
-    })
-})
-
-document.querySelector(".postcommentbtn").onclick = function () {
-    document.querySelector("textarea").classList.toggle("hide")
-        document.querySelector(".postcommentbtn").classList.toggle("hide")
-
-}
-
-// shair page--------------------------------------------
-
-document.querySelectorAll("#sharebtn").forEach(sha => {
-    console.log("hiii");
-    sha.addEventListener("click", e => {
-        document.querySelector(".shairpagmain").classList.toggle("hide")
-        document.querySelector("#cancialshairtbtn").classList.toggle("hide")
-
-    })
-});
-document.querySelector("#cancialshairbtn").onclick = function () {
-    document.querySelector(".shairpagmain").classList.toggle("hide")
-      
-}
-
-
+    <div class="outerdiv">
+        <div class="middeldiv "></div>
+        <div class="innrdiv"></div>
+    </div>
+    <!-- second page----------------- -->
+    <div class="secondpage hide ">
+        <div class="middeldiv2"></div>
+        <div class="innrdiv2"></div>
+    </div>
 </body>
+<script>
+    // change page-----------
+    function cha() {
+        document.querySelector(".secondpage").classList.toggle("hide")
+        document.querySelector(".outerdiv").classList.toggle("hide")
+    }
+    // main page-------------------
+    document.querySelector(".outerdiv").onclick = function () {
+        document.querySelector(".middeldiv").classList.toggle("startmidle")
+        document.querySelector(".innrdiv").classList.toggle("startinn")
+        setTimeout(cha, 4000)
+    }
+    // second page---------------------
+    function cha() {
+        document.querySelector(".secondpage").classList.toggle("hide")
+        document.querySelector(".outerdiv").classList.toggle("hide")
+    }
+    document.querySelector(".secondpage").onclick = function () {
+        document.querySelector(".middeldiv2").classList.toggle("startmidle")
+        document.querySelector(".innrdiv2").classList.toggle("startinn")
+        setTimeout(cha, 4000)
+    }
+
+
+</script>
+
 </html>
